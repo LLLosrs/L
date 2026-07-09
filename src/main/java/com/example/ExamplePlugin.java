@@ -1,5 +1,6 @@
 package com.example;
 
+import net.runelite.api.Ignore;
 import com.google.inject.Provides;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
