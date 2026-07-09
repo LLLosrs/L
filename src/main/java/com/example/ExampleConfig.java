@@ -4,16 +4,28 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
+@ConfigGroup("osrsnamewatcher")
 public interface ExampleConfig extends Config
 {
 	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
-		description = "The message to show to the user when they login"
+		keyName = "watchNames",
+		name = "Watch names",
+		description = "Comma-separated or line-separated names to watch. Empty = log every detected name change.",
+		position = 1
 	)
-	default String greeting()
+	default String watchNames()
 	{
-		return "Hello";
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = "outputFile",
+		name = "Output file",
+		description = "Optional custom JSONL output path. Leave empty to use default .runelite file.",
+		position = 2
+	)
+	default String outputFile()
+	{
+		return "";
 	}
 }
