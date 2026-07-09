@@ -1,6 +1,5 @@
 package com.example;
 
-import net.runelite.api.Ignore;
 import com.google.inject.Provides;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +11,7 @@ import java.time.Instant;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Nameable;
+import net.runelite.api.Ignore;
 import net.runelite.api.events.NameableNameChanged;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -67,6 +67,12 @@ public class ExamplePlugin extends Plugin
 		{
 			return;
 		}
+		
+		// Alleen ignore-list entries tracken. Friends list / clan / chat negeren.
+if (!(nameable instanceof Ignore))
+{
+	return;
+}
 
 		String newName = safeGetName(nameable);
 		String oldName = safeGetPrevName(nameable);
